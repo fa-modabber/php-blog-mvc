@@ -1,0 +1,22 @@
+{
+  "name": "my-project/php-blog-mvc",
+  "description": "a blog with php oop and mvc",
+  "type:": "project",
+  "auhthors": [
+    {
+      "name": "Fatemeh Modabber",
+      "email": "fateme.modabber.73@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "app\\": "app/"
+    },
+    "files": [
+      "helpers/auth.php",
+      "helpers/url_helper.php",
+      "helpers/validate_helper.php"
+    ]
+  }
+}
