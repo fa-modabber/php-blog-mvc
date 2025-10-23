@@ -7,15 +7,20 @@ use \PDOException;
 
 class Database
 {
-    private $serverName = "localhost";
-    private $dbNme = "php_blog-mvc";
-    private $dbUsername = "root";
-    private $dbPassword = "";
+    private $serverName;
+    private $dbName;
+    private $dbUsername;
+    private $dbPassword;
     public $conn;
 
     public function __construct()
     {
-        $dns = "mysql:host=$this->serverName;dbname=$this->dbNme;charset=utf8mb4";
+        $this->serverName = $_ENV['DB_HOST'] ?? getenv('DB_HOST') ?? '127.0.0.1';
+        $this->dbName     = $_ENV['DB_NAME'] ?? getenv('DB_NAME') ?? 'database';
+        $this->dbUsername = $_ENV['DB_USER'] ?? getenv('DB_USER') ?? 'root';
+        $this->dbPassword = $_ENV['DB_PASS'] ?? getenv('DB_PASS') ?? '';
+
+        $dns = "mysql:host=$this->serverName;dbname=$this->dbName;charset=utf8mb4";
 
         try {
             $this->conn = new PDO($dns, $this->dbUsername, $this->dbPassword);
